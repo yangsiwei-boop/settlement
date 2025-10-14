@@ -1,0 +1,38 @@
+package ${package.Entity};
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+/**
+* <p>
+    * ${table.comment!}
+    * </p>
+*
+* @author ${author}
+* @since ${date}
+*/
+@Data
+@Schema(description = "${table.comment!}")
+@TableName("${table.name}")
+public class ${entity} implements Serializable {
+
+private static final long serialVersionUID = 1L;
+
+<#list table.fields as field>
+    <#if field.keyFlag>
+        @Schema(description = "${field.comment!}")
+        @TableId(value = "${field.name}", type = IdType.AUTO)
+        private ${field.propertyType} ${field.propertyName};
+    <#else>
+        @Schema(description = "${field.comment!}")
+        @TableField("${field.name}")
+        private ${field.propertyType} ${field.propertyName};
+    </#if>
+</#list>
+}
