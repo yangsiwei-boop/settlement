@@ -5,7 +5,7 @@ spring:
   datasource:
     # 1. 驱动类名更新：使用MySQL官方推荐的新驱动类
     driver-class-name: com.mysql.cj.jdbc.Driver # 替换旧的 'com.mysql.jdbc.Driver' [2](@ref)
-    url: jdbc:mysql://14.103.174.114:3306/waterworks_test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://14.103.174.114:3306/settlement?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
     username: root
     password: root_PASS866.
     # 2. 明确指定连接池类型（如果你使用的是Druid）
