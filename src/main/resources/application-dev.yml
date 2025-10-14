@@ -1,0 +1,72 @@
+server:
+  port: 17075
+
+spring:
+  datasource:
+    # 1. 驱动类名更新：使用MySQL官方推荐的新驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver # 替换旧的 'com.mysql.jdbc.Driver' [2](@ref)
+    url: jdbc:mysql://14.103.174.114:3306/waterworks_test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
+    username: root
+    password: root_PASS866.
+    # 2. 明确指定连接池类型（如果你使用的是Druid）
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 3. Druid连接池专属配置（示例，可根据需要调整）
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      validation-query: SELECT 1 # 连接有效性检查的SQL
+      test-while-idle: true # 建议开启空闲连接检查
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true # 开启PSCache
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall # 配置监控统计用的filter
+
+  # 4. Redis配置：注意新版本Spring Boot中，部分配置路径可能更推荐放在 `spring.data.redis` 下[6](@ref)
+  data: # 新增'data'层级
+    redis:
+      database: 0
+      host: 14.103.174.114
+      port: 6379
+      password: '' # 如果无密码，可以保持空字符串
+      timeout: 10s
+      lettuce:
+        pool:
+          max-active: 200
+          max-wait: -1ms
+          max-idle: 10
+          min-idle: 3
+      # 可选：配置Redis缓存默认过期时间等（如果项目使用了Spring Cache）
+      # cache:
+      #   type: redis
+      #   redis:
+      #     time-to-live: 3600000ms # 1小时默认过期时间
+      #     use-key-prefix: true
+
+  # 5. 如果使用了JPA
+  jpa:
+    show-sql: true # 在控制台显示SQL（开发环境方便调试）
+    hibernate:
+      ddl-auto: update # 根据实体类自动更新表结构，生产环境慎用或改为'validate'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect # 推荐使用MySQL8方言
+
+# 6. 如果使用了MyBatis-Plus（非Spring原生配置，但很常用）
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 输出SQL到日志，方便调试
+    map-underscore-to-camel-case: true # 开启自动驼峰命名规则映射
+  global-config:
+    db-config:
+      id-type: auto # 主键ID自增
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为0）
+
+# 7. 应用自定义配置
+settlement:
+  app:
+    name: settlement
