@@ -22,9 +22,9 @@ spring:
     name: settlement
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://14.103.174.114:3306/settlement?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://114.67.212.224:3306/settlement?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
     username: root
-    password: root_PASS866.
+    password: e^7I5Qfo!Z=s
     hikari:
       max-lifetime: 29000
     type: com.alibaba.druid.pool.DruidDataSource
