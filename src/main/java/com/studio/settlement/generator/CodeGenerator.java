@@ -79,7 +79,7 @@ public class CodeGenerator {
                             .formatFileName("%sController");
                 })
                 .templateConfig(builder -> {
-                    builder.entity("/templates/entity.java");
+                    builder.entity("/templates/entity.java.vm");
                 })
                 .templateEngine(new VelocityTemplateEngine())
                 .execute();
