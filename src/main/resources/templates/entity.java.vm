@@ -10,29 +10,29 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
-* <p>
-    * ${table.comment}
-    * </p>
-*
-* @author ${author}
-* @since ${date}
-*/
+ * <p>
+ * ${table.comment}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
 @Data
 @Schema(description = "$!{table.comment}")
 @TableName("${table.name}")
 public class ${entity} implements Serializable {
 
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-#foreach($field in ${table.fields})
-#if(${field.keyFlag})
-@Schema(description = "$!{field.comment}")
-@TableId(value = "${field.name}", type = IdType.AUTO)
-private ${field.propertyType} ${field.propertyName};
-#else
-@Schema(description = "$!{field.comment}")
-@TableField("${field.name}")
-private ${field.propertyType} ${field.propertyName};
-#end
-#end
+    #foreach($field in ${table.fields})
+        #if(${field.keyFlag})
+            @Schema(description = "$!{field.comment}")
+            @TableId(value = "${field.name}", type = IdType.AUTO)
+            private ${field.propertyType} ${field.propertyName};
+        #else
+            @Schema(description = "$!{field.comment}")
+            @TableField("${field.name}")
+            private ${field.propertyType} ${field.propertyName};
+        #end
+    #end
 }

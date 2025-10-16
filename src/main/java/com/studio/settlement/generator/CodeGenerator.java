@@ -11,17 +11,17 @@ import java.util.Collections;
 public class CodeGenerator {
 
     // 数据库配置
-    private static final String JDBC_URL = "jdbc:mysql://14.103.174.114:3306/settlement?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true";
+    private static final String JDBC_URL = "jdbc:mysql://114.67.212.224:3306/settlement?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "root_PASS866.";
+    private static final String JDBC_PASSWORD = "e^7I5Qfo!Z=s";
 
     // 项目配置
     private static final String PROJECT_PATH = System.getProperty("user.dir");
     private static final String PARENT_PACKAGE = "com.studio.settlement";
 
     // 表配置
-    private static final String[] TABLE_NAMES = {"lb_product_inventory", "lb_product_operation_record"};
-    private static final String TABLE_PREFIX = "lb_";
+    private static final String[] TABLE_NAMES = {"yb_base_orders", "yb_actual_orders"};
+    private static final String TABLE_PREFIX = "yb_";
 
     public static void main(String[] args) {
         System.out.println("项目路径: " + PROJECT_PATH);
