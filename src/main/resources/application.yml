@@ -55,8 +55,8 @@ spring:
       max-request-size: 20MB
   data: # ??'data'??
     redis:
-      database: 0
-      host: 14.103.174.114
+      database: 1
+      host: 114.67.212.224
       port: 6379
       password: '' # 如果无密码，可以保持空字符串
       timeout: 10s

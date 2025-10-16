@@ -27,8 +27,8 @@ spring:
   # 4. Redis配置：注意新版本Spring Boot中，部分配置路径可能更推荐放在 `spring.data.redis` 下[6](@ref)
   data: # 新增'data'层级
     redis:
-      database: 0
-      host: 14.103.174.114
+      database: 1
+      host: 114.67.212.224
       port: 6379
       password: '' # 如果无密码，可以保持空字符串
       timeout: 10s
