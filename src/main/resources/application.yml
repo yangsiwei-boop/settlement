@@ -73,6 +73,9 @@ spring:
       #     time-to-live: 3600000ms # 1小时默认过期时间
       #     use-key-prefix: true
 # application.yml ????
+  transaction:
+    default-timeout: 30
+    rollback-on-commit-failure: true
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
