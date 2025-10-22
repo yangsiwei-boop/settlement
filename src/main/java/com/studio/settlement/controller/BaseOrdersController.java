@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @since 2025-10-16
  */
 @RestController
-@RequestMapping("/api/base-orders")
+@RequestMapping("/settlement/base-orders")
 @Tag(name = "基础订单管理", description = "基础订单的增删改查接口")
 public class BaseOrdersController {
 

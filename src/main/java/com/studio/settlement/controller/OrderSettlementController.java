@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 订单结算控制器
  */
 @RestController
-@RequestMapping("/api/order-settlement")
+@RequestMapping("/settlement/order-settlement")
 @Tag(name = "订单结算管理", description = "订单结算相关接口")
 public class OrderSettlementController {
 

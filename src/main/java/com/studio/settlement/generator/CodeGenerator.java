@@ -20,7 +20,8 @@ public class CodeGenerator {
     private static final String PARENT_PACKAGE = "com.studio.settlement";
 
     // 表配置
-    private static final String[] TABLE_NAMES = {"yb_customer_accounts", "yb_account_transactions"};
+//    private static final String[] TABLE_NAMES = {"yb_customer_accounts", "yb_account_transactions"};
+    private static final String[] TABLE_NAMES = {"yb_servers"};
     private static final String TABLE_PREFIX = "yb_";
 
     public static void main(String[] args) {

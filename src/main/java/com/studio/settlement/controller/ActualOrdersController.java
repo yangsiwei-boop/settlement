@@ -32,7 +32,7 @@ import java.util.List;
  * @since 2025-10-16
  */
 @RestController
-@RequestMapping("/api/actual-orders")
+@RequestMapping("/settlement/actual-orders")
 @Tag(name = "实际执行单管理", description = "实际执行单的增删改查接口")
 public class ActualOrdersController {
 
