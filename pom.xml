@@ -27,7 +27,6 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- 统一版本管理 -->
         <mybatis-plus.version>3.5.6</mybatis-plus.version>
@@ -38,9 +37,9 @@
         <fastjson.version>2.0.50</fastjson.version>
         <knife4j.version>4.4.0</knife4j.version>
 
-        <!-- 添加跳过执行的属性 -->
-        <skipTests>true</skipTests>
-        <maven.test.skip>true</maven.test.skip>
+        <!-- 移除全局跳过测试属性，改为按需使用命令行参数 -->
+         <skipTests>true</skipTests>
+         <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <dependencies>
@@ -152,26 +151,29 @@
 
     <build>
         <plugins>
+            <!-- 关键修改：移除skip配置，确保生成可执行JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <!-- 跳过执行，只打包不运行 -->
-                    <skip>true</skip>
+                    <!-- 移除skip配置，确保插件正常执行repackage目标 -->
+                    <!-- <skip>true</skip> -->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <!-- 可选：显式指定主类（如果自动检测失败） -->
+                    <!-- <mainClass>com.studio.settlement.SettlementApplication</mainClass> -->
                 </configuration>
                 <executions>
                     <execution>
                         <id>repackage</id>
-                        <configuration>
-                            <!-- 确保在打包时也跳过执行 -->
-                            <skip>true</skip>
-                        </configuration>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <!-- 移除嵌套的skip配置 -->
                     </execution>
                 </executions>
             </plugin>
@@ -186,39 +188,40 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <!-- 注意：这里应该使用属性或具体版本号 -->
-                            <version>1.18.30</version>
+                            <!-- 使用父POM提供的版本，避免硬编码 -->
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
-            <!-- 添加maven-surefire-plugin来跳过测试 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
+            <!-- 保留测试插件配置，但改为按需使用 -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; 默认不跳过测试，可通过命令行参数控制 &ndash;&gt;-->
+<!--                    <skipTests>false</skipTests>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
-            <!-- 添加maven-failsafe-plugin来跳过集成测试 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; 默认不跳过集成测试 &ndash;&gt;-->
+<!--                    <skipTests>false</skipTests>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
-    <!-- 添加profile配置，允许根据需要控制是否跳过执行 -->
+    <!-- 简化profile配置 -->
     <profiles>
         <profile>
-            <id>skip-execution</id>
+            <id>fast-build</id>
             <properties>
-                <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+                <skipTests>true</skipTests>
             </properties>
         </profile>
     </profiles>

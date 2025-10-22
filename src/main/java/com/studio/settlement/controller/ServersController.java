@@ -44,7 +44,7 @@ public class ServersController {
     }
 
     @Operation(summary = "更新打手信息", description = "更新指定的打手信息")
-    @PostMapping("/{id}")
+    @PostMapping("/updateServer/{id}")
     public ApiResult<ServerVO> updateServer(
             @Parameter(description = "打手ID") @PathVariable Long id,
             @RequestBody ServersPo serversPo) {
@@ -58,7 +58,7 @@ public class ServersController {
     }
 
     @Operation(summary = "删除打手信息", description = "删除指定的打手信息")
-    @PostMapping("/{id}")
+    @PostMapping("/deleteServer/{id}")
     public ApiResult<Void> deleteServer(@Parameter(description = "打手ID") @PathVariable Long id) {
         boolean success = serversService.removeById(id);
         if (success) {
