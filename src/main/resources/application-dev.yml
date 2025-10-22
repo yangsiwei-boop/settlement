@@ -1,6 +1,7 @@
 server:
   port: 17075
-
+  servlet:
+    context-path: /settlement
 spring:
   datasource:
     # 1. 驱动类名更新：使用MySQL官方推荐的新驱动类

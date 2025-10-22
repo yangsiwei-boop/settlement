@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * @since 2025-10-21
  */
 @RestController
-@RequestMapping("/settlement/account-transactions")
+@RequestMapping("/account-transactions")
 @Tag(name = "账户变动记录管理", description = "账户变动记录的查询接口")
 public class AccountTransactionsController {
 

@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @since 2025-10-21
  */
 @RestController
-@RequestMapping("/settlement/customer-accounts")
+@RequestMapping("/customer-accounts")
 @Tag(name = "客户账户管理", description = "客户账户的查询和管理接口")
 public class CustomerAccountsController {
 

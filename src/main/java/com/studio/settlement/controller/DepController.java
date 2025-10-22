@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@RequestMapping("/settlement/dep")
+@RequestMapping("/dep")
 @Tag(name = "部门信息接口", description = "部门管理相关接口")
 public class DepController {
 

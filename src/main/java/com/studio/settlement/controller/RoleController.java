@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping("/settlement/role")
+@RequestMapping("/role")
 @Tag(name = "角色管理接口", description = "角色管理相关接口")
 public class RoleController {
 

@@ -22,7 +22,7 @@ import com.alibaba.fastjson.JSONObject;
  */
 @Slf4j
 @RestController
-@RequestMapping("/settlement/user")
+@RequestMapping("/user")
 @Tag(name = "用户管理接口", description = "用户管理相关接口")
 public class UserController {
 

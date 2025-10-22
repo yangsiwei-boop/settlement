@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * @since 2025-10-22
  */
 @RestController
-@RequestMapping("/settlement/servers")
+@RequestMapping("/servers")
 @Tag(name = "打手基本信息管理", description = "打手基本信息的增删改查接口")
 public class ServersController {
 
