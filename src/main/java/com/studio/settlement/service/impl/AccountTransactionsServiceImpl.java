@@ -22,7 +22,7 @@ public class AccountTransactionsServiceImpl extends ServiceImpl<AccountTransacti
         implements AccountTransactionsService {
 
     @Override
-    public void recordTransaction(String customerName, Byte transactionType, BigDecimal amount,
+    public void recordTransaction(String customerName, Integer transactionType, BigDecimal amount,
                                   BigDecimal balanceAfter, String orderCode, String operator, String notes) {
         AccountTransactionsPo transaction = new AccountTransactionsPo();
         transaction.setCustomerName(customerName);

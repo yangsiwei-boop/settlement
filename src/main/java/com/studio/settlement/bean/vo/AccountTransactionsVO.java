@@ -17,7 +17,7 @@ public class AccountTransactionsVO {
     private String customerName;
 
     @Schema(description = "交易类型 (1:充值 2:消费)")
-    private Byte transactionType;
+    private Integer transactionType;
 
     @Schema(description = "关联订单号")
     private String relatedOrderCode;

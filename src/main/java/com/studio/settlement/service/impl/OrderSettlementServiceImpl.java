@@ -63,7 +63,7 @@ public class OrderSettlementServiceImpl implements OrderSettlementService {
             }
 
             // 4. 更新订单状态为已完成
-            order.setOrderStatus((byte) 3);
+            order.setOrderStatus(3);
             order.setServiceEndTime(new Date());
             order.setCustomerName(customerName);
             actualOrdersService.updateById(order);
@@ -84,7 +84,7 @@ public class OrderSettlementServiceImpl implements OrderSettlementService {
             // 7. 记录交易流水
             accountTransactionsService.recordTransaction(
                     customerName,
-                    (byte) 2, // 消费
+                    2, // 消费
                     consumedAmount.negate(), // 负值表示支出
                     account.getCurrentBalance(),
                     "ORDER_" + orderId,
@@ -120,7 +120,7 @@ public class OrderSettlementServiceImpl implements OrderSettlementService {
             // 3. 记录交易流水
             accountTransactionsService.recordTransaction(
                     customerName,
-                    (byte) 1, // 充值
+                    1, // 充值
                     amount,
                     account.getCurrentBalance(),
                     orderCode,
@@ -188,7 +188,7 @@ public class OrderSettlementServiceImpl implements OrderSettlementService {
                     CustomerAccountsPo account = customerAccountsService.getByCustomerName(order.getCustomerName());
                     accountTransactionsService.recordTransaction(
                             order.getCustomerName(),
-                            (byte) 1, // 充值（退款）
+                            1, // 充值（退款）
                             refundAmount,
                             account.getCurrentBalance(),
                             "REFUND_" + orderId,
@@ -199,7 +199,7 @@ public class OrderSettlementServiceImpl implements OrderSettlementService {
             }
 
             // 4. 更新订单状态为已取消
-            order.setOrderStatus((byte) 4);
+            order.setOrderStatus(4);
             actualOrdersService.updateById(order);
 
             return ApiResult.ok("订单取消成功");

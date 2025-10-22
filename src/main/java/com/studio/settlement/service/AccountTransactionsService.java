@@ -25,6 +25,6 @@ public interface AccountTransactionsService extends IService<AccountTransactions
      * @param operator 操作人员
      * @param notes 备注
      */
-    void recordTransaction(String customerName, Byte transactionType, BigDecimal amount,
+    void recordTransaction(String customerName, Integer transactionType, BigDecimal amount,
                            BigDecimal balanceAfter, String orderCode, String operator, String notes);
 }
