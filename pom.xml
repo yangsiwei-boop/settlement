@@ -15,7 +15,7 @@
 
     <groupId>com.studio</groupId>
     <artifactId>settlement</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>settlement</name>
     <description>settlement</description>
 
