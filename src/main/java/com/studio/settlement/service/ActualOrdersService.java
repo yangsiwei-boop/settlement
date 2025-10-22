@@ -37,7 +37,7 @@ public interface ActualOrdersService extends IService<ActualOrdersPo> {
      * @param status 新状态（1:待服务 2:服务中 3:已完成 4:已取消）
      * @return 是否更新成功
      */
-    boolean updateOrderStatus(Long id, Byte status);
+    boolean updateOrderStatus(Long id, int status);
 
     /**
      * 开始服务（记录开始时间）
@@ -93,12 +93,12 @@ public interface ActualOrdersService extends IService<ActualOrdersPo> {
      * @param status 订单状态
      * @return 执行单列表
      */
-    List<ActualOrdersPo> listByStatus(Byte status);
+    List<ActualOrdersPo> listByStatus(int status);
 
     /**
      * 根据结算状态查询执行单
      * @param settlementStatus 结算状态
      * @return 执行单列表
      */
-    List<ActualOrdersPo> listBySettlementStatus(Byte settlementStatus);
+    List<ActualOrdersPo> listBySettlementStatus(int settlementStatus);
 }

@@ -49,7 +49,7 @@ public class ActualOrdersServiceImpl extends ServiceImpl<ActualOrdersMapper, Act
 
         // 设置默认状态
         if (entity.getOrderStatus() == null) {
-            entity.setOrderStatus((byte) 1); // 默认待服务状态
+            entity.setOrderStatus(1); // 默认待服务状态
         }
 
         // 设置创建时间
@@ -67,7 +67,7 @@ public class ActualOrdersServiceImpl extends ServiceImpl<ActualOrdersMapper, Act
     }
 
     @Override
-    public boolean updateOrderStatus(Long id, Byte status) {
+    public boolean updateOrderStatus(Long id, int status) {
         ActualOrdersPo entity = new ActualOrdersPo();
         entity.setId(id);
         entity.setOrderStatus(status);
@@ -78,7 +78,7 @@ public class ActualOrdersServiceImpl extends ServiceImpl<ActualOrdersMapper, Act
     public boolean startService(Long id) {
         ActualOrdersPo entity = new ActualOrdersPo();
         entity.setId(id);
-        entity.setOrderStatus((byte) 2); // 服务中状态
+        entity.setOrderStatus(2); // 服务中状态
         entity.setServiceStartTime(new Date());
         return updateById(entity);
     }
@@ -87,7 +87,7 @@ public class ActualOrdersServiceImpl extends ServiceImpl<ActualOrdersMapper, Act
     public boolean completeService(Long id) {
         ActualOrdersPo entity = new ActualOrdersPo();
         entity.setId(id);
-        entity.setOrderStatus((byte) 3); // 已完成状态
+        entity.setOrderStatus(3); // 已完成状态
         entity.setServiceEndTime(new Date());
         return updateById(entity);
     }
@@ -96,7 +96,7 @@ public class ActualOrdersServiceImpl extends ServiceImpl<ActualOrdersMapper, Act
     public boolean settleOrder(Long id) {
         ActualOrdersPo entity = new ActualOrdersPo();
         entity.setId(id);
-        entity.setSettlementStatus((byte) 1); // 已结算状态
+        entity.setSettlementStatus(1); // 已结算状态
         entity.setSettlementTime(new Date());
         return updateById(entity);
     }
@@ -133,14 +133,14 @@ public class ActualOrdersServiceImpl extends ServiceImpl<ActualOrdersMapper, Act
     }
 
     @Override
-    public List<ActualOrdersPo> listByStatus(Byte status) {
+    public List<ActualOrdersPo> listByStatus(int status) {
         return list(new LambdaQueryWrapper<ActualOrdersPo>()
                 .eq(ActualOrdersPo::getOrderStatus, status)
                 .orderByDesc(ActualOrdersPo::getCreateTime));
     }
 
     @Override
-    public List<ActualOrdersPo> listBySettlementStatus(Byte settlementStatus) {
+    public List<ActualOrdersPo> listBySettlementStatus(int settlementStatus) {
         return list(new LambdaQueryWrapper<ActualOrdersPo>()
                 .eq(ActualOrdersPo::getSettlementStatus, settlementStatus)
                 .orderByDesc(ActualOrdersPo::getCreateTime));

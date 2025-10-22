@@ -128,7 +128,7 @@ public class ActualOrdersController {
     @Operation(summary = "根据订单状态查询执行单", description = "根据订单状态查询执行单")
     @GetMapping("/status/{status}")
     public ApiResult<List<ActualOrdersPo>> getByStatus(
-            @Parameter(description = "订单状态 (1:待服务 2:服务中 3:已完成 4:已取消)") @PathVariable Byte status) {
+            @Parameter(description = "订单状态 (1:待服务 2:服务中 3:已完成 4:已取消)") @PathVariable int status) {
         List<ActualOrdersPo> orders = actualOrdersService.listByStatus(status);
         return ApiResult.ok("查询成功").data(orders);
     }
@@ -136,7 +136,7 @@ public class ActualOrdersController {
     @Operation(summary = "根据结算状态查询执行单", description = "根据结算状态查询执行单")
     @GetMapping("/settlement-status/{status}")
     public ApiResult<List<ActualOrdersPo>> getBySettlementStatus(
-            @Parameter(description = "结算状态 (0:未结算 1:已结算)") @PathVariable Byte status) {
+            @Parameter(description = "结算状态 (0:未结算 1:已结算)") @PathVariable int status) {
         List<ActualOrdersPo> orders = actualOrdersService.listBySettlementStatus(status);
         return ApiResult.ok("查询成功").data(orders);
     }
@@ -181,7 +181,7 @@ public class ActualOrdersController {
     @Operation(summary = "取消执行单", description = "取消执行单")
     @PostMapping("/{id}/cancel")
     public ApiResult<Void> cancelOrder(@Parameter(description = "执行单ID") @PathVariable Long id) {
-        boolean success = actualOrdersService.updateOrderStatus(id, (byte) 4); // 4表示已取消
+        boolean success = actualOrdersService.updateOrderStatus(id, 4); // 4表示已取消
         if (success) {
             return ApiResult.ok("取消成功");
         }

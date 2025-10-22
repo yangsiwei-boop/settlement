@@ -93,11 +93,11 @@ public class ActualOrdersPo implements Serializable {
 
     @Schema(description = "订单状态（1:待服务 2:服务中 3:已完成 4:已取消）")
     @TableField("order_status")
-    private Byte orderStatus;
+    private Integer orderStatus;
 
     @Schema(description = "结算状态（0:未结算 1:已结算）")
     @TableField("settlement_status")
-    private Byte settlementStatus;
+    private Integer settlementStatus;
 
     @Schema(description = "服务开始时间")
     @TableField("service_start_time")
